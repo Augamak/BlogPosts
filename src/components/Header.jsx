@@ -1,13 +1,23 @@
-import { Link } from "react-router-dom";
+
+import { Link, NavLink } from "react-router-dom";
+
 
 const Header = () => {
     return (
         <div className="header-wrapper">
-            <Link to="/">Home</Link>
-            <Link to="/reviews">Reviews</Link>
-            <Link to="/contacts">Contacts</Link>
-            <Link to="/about">About Us</Link>
-            <Link to="/products">Products</Link>
+            <NavLink 
+                className={({ isActive }) => {
+                    return isActive
+                    ? "header.nav.link decor active" 
+                    : "header-nav-link";
+                }} 
+                to="/"
+            >
+                 Home</NavLink>
+            <NavLink className="header-nav-link" to="/articles">Articles</NavLink>
+            <NavLink className="header-nav-link" to="/contacts">Contacts</NavLink>
+            
+            
         </div>    
     );
 };

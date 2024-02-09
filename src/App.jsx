@@ -1,9 +1,8 @@
 import Home from "./Pages/Home";
-import About from "./Pages/About";
+
 import Contacts from "./Pages/Contacts";
-import Products from "./Pages/Products";
-import Reviews from "./Pages/Reviews";
-import { Router } from "vue-router";
+import Articles from "./Pages/Articles";
+import { Route, Routes } from "react-router-dom";
 import { MainLayout} from "./layouts/MainLayout";
 
 
@@ -14,9 +13,7 @@ import { MainLayout} from "./layouts/MainLayout";
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="products" element={<Products />} />
-          <Route path="reviews" element={<Reviews />} />
+          <Route path="articles" element={<Articles />} />
           <Route path="contacts" element={<Contacts />} />
         </Route>
       </Routes>
