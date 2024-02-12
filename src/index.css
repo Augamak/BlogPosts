@@ -49,6 +49,9 @@ main {
 .about {
   color: yellow;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .header-nav-link {

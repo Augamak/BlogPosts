@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 const SingleArticle = () => {
     const [article, setArticle] = useState({});
     const {id} = useParams ()
+    const navigate = useNavigate ()
+    const location = useLocation()
+    console.log(location)
     
 
 useEffect(() => {
@@ -16,6 +20,7 @@ useEffect(() => {
    
 }, []);
     
+    
 
     return (
         <div className="article-post">
@@ -23,6 +28,7 @@ useEffect(() => {
            <h1>Category - {article.category}</h1>
            <p>{article.content_text}</p>
            <img className="article-img" src={article.photo_url} alt="photo" />
+            <BackButton />
         </div> 
     );
 };
