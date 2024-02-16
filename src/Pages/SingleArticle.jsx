@@ -6,7 +6,7 @@ const SingleArticle = () => {
     const [article, setArticle] = useState({});
     const {id} = useParams ()
     const navigate = useNavigate ()
-    const location = useLocation()
+    const location = useLocation ()
     console.log(location)
     
 
@@ -15,7 +15,6 @@ useEffect(() => {
     .then((response) => response.json())
     .then((blog) => {
         setArticle(blog.blog)
-        console.log(blog.blog)
     })
    
 }, []);

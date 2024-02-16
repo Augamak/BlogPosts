@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 function BackButton() {
     const navigate = useNavigate()
 
-    const backToList = () => {
-        navigate("/articles")
-    }
+    const backToList = () => 
+    navigate("/articles", { state: { content_text: "" } });
+    
 
 
     return (

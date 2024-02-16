@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ArticleCtx } from "../App";
 
 const Articles = () => {
 
+    const {article} = useContext(ArticleCtx)
     const [articles, setArticles] = useState([])
-    console.log(articles)
     const [number, setNumber] = useState(0);
+    const location = useLocation ()
+    console.log(location)
 
     const right = () => {
         setNumber((prev) => {
@@ -36,11 +40,13 @@ const Articles = () => {
                 <span onClick={right} className='simbol-arrow'>⇒</span>{" "}
             </div>
             <div className="cards-blog">
-                {articles.map((art) => {
+                {articles?.map((art) => {
                 return (
                     <div className="cards" key={art.id}>
                         <Link className="article-link" to={`/articles/${art.id}`}>
-                            {art.id} - {art.title}
+                             <div className="article-title">{art.title}</div>
+                            <img src={art.photo_url} alt="photo" style={{width: "150px", paddingTop: "20px"}} />
+                            <button className="cards-button">Read more</button>
                         </Link>
                     </div>
                 );
