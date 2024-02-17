@@ -6,11 +6,21 @@ import { MainLayout} from "./layouts/MainLayout";
 import SingleArticle from "./Pages/SingleArticle";
 import { createContext, useState } from "react";
 import NewArticle from "./Pages/NewArticle";
+import { useEffect, useState } from "react";
 
  export const ArticleCtx = createContext({})
 
  export const App = () => {
-  const [articles, setArticles] = useState ([])
+  
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+      fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?offset=${number}&limit=${10}`)
+      .then((response) => response.json())
+      .then((blogs) => setArticles(blogs.blogs))
+      
+     
+  }, [number]);
   
 
   return (

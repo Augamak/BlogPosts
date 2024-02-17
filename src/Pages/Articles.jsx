@@ -1,15 +1,24 @@
 import { useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { ArticleCtx } from "../App";
+import { useLocation, useNavigate } from "react-router-dom";
+
+
 
 const Articles = () => {
 
-    const {article} = useContext(ArticleCtx)
     const [articles, setArticles] = useState([])
     const [number, setNumber] = useState(0);
     const location = useLocation ()
+    const navigate = useNavigate()
     console.log(location)
+
+    const linkClickManager = (id) => {
+        navigate(`/articles/${id}`, {
+            state: {
+                id, title: articles[id - 1].title, 
+                content_text: articles[id - 1].content_text, 
+                photo_url: articles[id - 1].photo_url
+            }})
+    };
 
     const right = () => {
         setNumber((prev) => {
@@ -43,11 +52,18 @@ const Articles = () => {
                 {articles?.map((art) => {
                 return (
                     <div className="cards" key={art.id}>
-                        <Link className="article-link" to={`/articles/${art.id}`}>
+                        
+                        <div className="article-link" 
+                            onClick={() => {
+                                linkClickManager(art.id);
+                            }} 
+                            
+                            >
+
                              <div className="article-title">{art.title}</div>
                             <img src={art.photo_url} alt="photo" style={{width: "150px", paddingTop: "20px"}} />
                             <button className="cards-button">Read more</button>
-                        </Link>
+                        </div>
                     </div>
                 );
                 })}
