@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArticleCtx } from "../App";
 
@@ -6,17 +6,17 @@ import { ArticleCtx } from "../App";
 
 export const Articles = () => {
 
-    const [articles, setArticles] = useState([])
-    const [number, setNumber] = useState(0);
+    
     const navigate = useNavigate()
-    const { articles } = useContext(ArticleCtx)
+    const { articles, setNumber, number } = useContext(ArticleCtx)
 
     const linkClickManager = (id) => {
         navigate(`/articles/${id}`, {
             state: {
-                id, title: articles[id - 1].title, 
-                content_text: articles[id - 1].content_text, 
-                photo_url: articles[id - 1].photo_url
+                id, 
+                title: articles[id - (number === 0 ? 1 : number + 1 )].title,  
+                content_text: articles[id -(number === 0 ? 1 : number + 1 )].content_text, 
+                photo_url: articles[id - (number === 0 ? 1 : number + 1 )].photo_url
             }})
     };
 
@@ -34,14 +34,6 @@ export const Articles = () => {
         })
       }
 
-    useEffect(() => {
-        fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?offset=${number}&limit=${10}`)
-        .then((response) => response.json())
-        .then((blogs) => setArticles(blogs.blogs))
-        
-       
-    }, [number]);
-
     return (
         <div className="about">
             <div className="arrow">
@@ -58,7 +50,6 @@ export const Articles = () => {
                                 linkClickManager(art.id);
                             }} 
                             >
-                             <div className="article-title">{art.title}</div>
                             <img src={art.photo_url} alt="photo" style={{width: "150px", paddingTop: "20px"}} />
                             <button className="cards-button">Read more</button>
                         </div>

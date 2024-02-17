@@ -26,7 +26,7 @@ import { useEffect } from "react";
 
   return (
     <>
-      <ArticleCtx.Provider value={{articles, setArticles}}>
+      <ArticleCtx.Provider value={{articles, setArticles, number, setNumber}}>
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route path="/" element={<Home />} />
