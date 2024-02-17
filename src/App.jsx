@@ -6,13 +6,14 @@ import { MainLayout} from "./layouts/MainLayout";
 import SingleArticle from "./Pages/SingleArticle";
 import { createContext, useState } from "react";
 import NewArticle from "./Pages/NewArticle";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
  export const ArticleCtx = createContext({})
 
  export const App = () => {
-  
   const [articles, setArticles] = useState([])
+  const [number, setNumber] = useState(0);
+
 
   useEffect(() => {
       fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?offset=${number}&limit=${10}`)
