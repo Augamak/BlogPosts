@@ -9,7 +9,7 @@ export const Articles = () => {
     const [articles, setArticles] = useState([])
     const [number, setNumber] = useState(0);
     const navigate = useNavigate()
-    const { article } = useContext(ArticleCtx)
+    const { articles } = useContext(ArticleCtx)
 
     const linkClickManager = (id) => {
         navigate(`/articles/${id}`, {
