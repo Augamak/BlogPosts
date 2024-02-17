@@ -50,6 +50,7 @@ export const Articles = () => {
                                 linkClickManager(art.id);
                             }} 
                             >
+                            <div className="article-title">{art.title}</div>
                             <img src={art.photo_url} alt="photo" style={{width: "150px", paddingTop: "20px"}} />
                             <button className="cards-button">Read more</button>
                         </div>
