@@ -47,7 +47,21 @@ main {
   margin: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 50px;
+}
+
+.about-home {
+  width: 300px;
+  color: yellow;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
 .header-nav-link {
@@ -201,4 +215,49 @@ main {
   border-radius: 6px;
   padding: 10px;
   font-style: italic;
+}
+
+.button-block {
+  display: flex;
+  gap: 40px;
+}
+
+.button {
+  font-size: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(109, 76, 52);
+  border: 2px solid rgb(109, 76, 52);
+  border-radius: 15px;
+  padding: 10px 30px ;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: rgb(212, 243, 35);
+  border: 2px solid rgb(212, 243, 35);
+  border-radius: 15px;
+  padding: 10px 30px ;
+  cursor: pointer;
+}
+
+.buttonAmount {
+  font-size: 24px;
+  width: 200px;
+  background-color: rgb(225, 151, 62);
+  color: rgb(109, 76, 52);
+  border: 2px solid rgb(109, 76, 52);
+  border-radius: 15px;
+  padding: 10px 30px ;
+  cursor: pointer;
+}
+
+.buttonAmount:hover {
+  color: rgb(212, 243, 35);
+  border: 2px solid rgb(212, 243, 35);
+  border-radius: 15px;
+  padding: 10px 30px ;
+  cursor: pointer;
 }
