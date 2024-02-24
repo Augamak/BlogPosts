@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
 
 export const SingleArticle = () => {
-    const [article, setArticle] = useState({});
-    const {id} = useParams ()
     const { state} = useLocation ()
     
     return (

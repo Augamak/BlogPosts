@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from './slices/articles';
+import { getAllData } from './slices/thunks';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    articlesStore: counterReducer,
 },
 })
+
+getAllData(store)

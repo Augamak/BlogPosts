@@ -1,26 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchArticles } from './thunks';
 
 const initialState = {
-  value: 0,
-}
+    articles: [],
+    status: 'idle',
+    error: '',
+};
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "articlesStore",
   initialState,
   reducers: {
-    increment: (state) => {
-      
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    
+    addNewArticle: (state, action) => {
+      state.articles = [...state.articles, action.payload];
     },
   },
-})
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchArticles.pending, (state) => {
+                state.status = "Loading"
+            })
+            .addCase(fetchArticles.fulfilled, (state, action) => {
+                state.status = "Succeeded";
+                state.articles = action.payload;
+            })
+            .addCase(fetchArticles.rejected, (state, action) => {
+                state.status = "Failed";
+                state.error = action.payload;
+            })
+    },
+});
 
-export default counterSlice.reducer
+export const { addNewArticle } = counterSlice.actions;
+export default counterSlice.reducer;
+

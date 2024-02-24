@@ -4,39 +4,29 @@ import Articles from "./Pages/Articles";
 import { Route, Routes } from "react-router-dom";
 import { MainLayout} from "./layouts/MainLayout";
 import SingleArticle from "./Pages/SingleArticle";
-import { createContext, useState } from "react";
 import NewArticle from "./Pages/NewArticle";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-
- export const ArticleCtx = createContext({})
+import { fetchArticles } from "./store/slices/thunks";
 
  export const App = () => {
-  const [articles, setArticles] = useState([])
-  const [number, setNumber] = useState(0);
 
-
+  const dispatch = useDispatch();
   useEffect(() => {
-      fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?offset=${number}&limit=${10}`)
-      .then((response) => response.json())
-      .then((blogs) => setArticles(blogs.blogs))
-      
-     
-  }, [number]);
-  
+    dispatch(fetchArticles());
+}, []);
 
   return (
     <>
-      <ArticleCtx.Provider value={{articles, setArticles, number, setNumber}}>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:id" element={<SingleArticle />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/new-article" element={<NewArticle />} />
-          </Route>
-        </Routes>
-      </ArticleCtx.Provider>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:id" element={<SingleArticle />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/new-article" element={<NewArticle />} />
+        </Route>
+      </Routes>
     </>
   );
 };

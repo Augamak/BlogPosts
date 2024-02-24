@@ -9,7 +9,7 @@ function BackButton() {
 
 
     return (
-        <h1 style={{cursor: "pointer"}} onClick={backToList}>Back to list</h1>    
+        <h1 style={{cursor: "pointer", width: "200px"}} onClick={backToList}>Back to list</h1>    
     )
 }
 

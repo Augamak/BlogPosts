@@ -81,7 +81,7 @@ main {
 }
 
 .cards-blog {
-  width: 1110px;
+  width: 1150px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -260,4 +260,24 @@ main {
   border-radius: 15px;
   padding: 10px 30px ;
   cursor: pointer;
+}
+
+.loading-data {
+  color: rgb(90, 90, 90);
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.error-data {
+  color: red;
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
